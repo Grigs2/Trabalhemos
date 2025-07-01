@@ -25,7 +25,7 @@ public class Empresa {
     @Column(name = "cnpj", nullable = false, length = 20)
     public String cnpj;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
     private Usuario usuario;
 
