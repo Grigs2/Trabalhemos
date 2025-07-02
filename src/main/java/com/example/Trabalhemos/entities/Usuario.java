@@ -28,4 +28,10 @@ public class Usuario implements Serializable {
     @Column(name= "tipo", nullable = false, length = 100)
     public String tipo;
 
+    public Usuario(String email, String senha, String tipo) {
+        this.email = email;
+        this.senha = senha;
+        this.tipo = tipo;
+    }
+
 }

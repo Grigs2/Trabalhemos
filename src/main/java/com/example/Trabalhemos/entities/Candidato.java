@@ -51,20 +51,22 @@ public class Candidato {
     @OneToMany(mappedBy = "candidato", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Linguagem> linguagens;
 
-    public Candidato(CandidatoDTO candidatoDTO) {
-        this.usuario = candidatoDTO.usuario();
-        this.nome = candidatoDTO.nome();
-        this.cpf = candidatoDTO.cpf();
-        this.dataNascimento = candidatoDTO.dataNascimento();
-        this.telefone = candidatoDTO.telefone();
-        this.criadoEm = Date.from(Instant.now());
-        this.endereco = candidatoDTO.endereco();
-        this.cidade = candidatoDTO.cidade();
-        this.estado = candidatoDTO.estado();
-        this.cep = candidatoDTO.cep();
-        this.formacoes = candidatoDTO.formacoes();
-        this.experiencias = candidatoDTO.experiencias();
-        this.linguagens = candidatoDTO.liguagens();
+    public Candidato(Long id, Usuario usuario, String nome, String cpf, Date dataNascimento, String telefone, Date criadoEm, String endereco,
+                     String cidade, String estado, String cep, List<Formacao> formacoes, List<Experiencia> experiencias, List<Linguagem> linguagens) {
+        this.id = id;
+        this.usuario = usuario;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+        this.criadoEm = criadoEm;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
+        this.formacoes = formacoes;
+        this.experiencias = experiencias;
+        this.linguagens = linguagens;
     }
 
 }

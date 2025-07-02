@@ -26,6 +26,11 @@ public class Formacao {
     @JoinColumn(name = "id_candidato")
     public Candidato candidato;
 
-
+    public Formacao(String instituicao, String curso, String status, Candidato candidato) {
+        this.instituicao = instituicao;
+        this.curso = curso;
+        this.status = status;
+        this.candidato = candidato;
+    }
 
 }

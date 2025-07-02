@@ -31,4 +31,12 @@ public class Experiencia {
     @Column(name = "termino", nullable = true)
     private Date termino;
 
+    public Experiencia(Long id, Candidato candidato, String papel, String organizacao,Date inicio, Date termino) {
+        this.id = id;
+        this.candidato = candidato;
+        this.papel = papel;
+        this.inicio = inicio;
+        this.termino = termino;
+        this.organizacao = organizacao;
+    }
 }
