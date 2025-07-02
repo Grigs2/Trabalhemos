@@ -31,5 +31,6 @@ public class Linguagem {
         this.nivel = nivel;
     }
 
+    public Linguagem() {}
 
 }

@@ -17,7 +17,7 @@ public record UsuarioDTO(Long id,
         return new Usuario(usuarioDTO.email(), usuarioDTO.senha(), usuarioDTO.tipo());
     }
 
-    public static UsuarioDTO toEntity(Usuario usuario) {
+    public static UsuarioDTO toDTO(Usuario usuario) {
         if (usuario == null) return null;
         return new UsuarioDTO(usuario.getId(), usuario.getEmail(), usuario.getSenha(), usuario.getTipo());
     }

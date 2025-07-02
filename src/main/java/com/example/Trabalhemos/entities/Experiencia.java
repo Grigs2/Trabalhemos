@@ -39,4 +39,5 @@ public class Experiencia {
         this.termino = termino;
         this.organizacao = organizacao;
     }
+    public Experiencia() {}
 }

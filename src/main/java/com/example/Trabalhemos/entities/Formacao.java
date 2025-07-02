@@ -32,5 +32,5 @@ public class Formacao {
         this.status = status;
         this.candidato = candidato;
     }
-
+    public Formacao() {}
 }

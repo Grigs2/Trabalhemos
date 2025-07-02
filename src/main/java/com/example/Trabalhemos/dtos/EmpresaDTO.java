@@ -12,7 +12,7 @@ public record EmpresaDTO(Long id,
                          String razaoSocial,
                          String nomeFantasia,
                          String cnpj,
-                         Usuario usuario) implements Serializable {
+                         UsuarioDTO usuarioDTO) implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 12323L;
@@ -20,11 +20,11 @@ public record EmpresaDTO(Long id,
     public static EmpresaDTO toEmpresaDTO(Empresa empresa) {
         if (empresa != null) return new EmpresaDTO(empresa.getId(), empresa.getNome(),
                                                     empresa.getRazaoSocial(), empresa.getNomeFantasia(),
-                                                    empresa.getCnpj(), empresa.getUsuario());
+                                                    empresa.getCnpj(), UsuarioDTO.toDTO(empresa.getUsuario()));
         else return null;
     }
     public static Empresa toEmpresa(EmpresaDTO dto) {
-        if (dto != null) return new Empresa(dto.id, dto.nome, dto.razaoSocial, dto.nomeFantasia, dto.cnpj, dto.usuario);
+        if (dto != null) return new Empresa(dto.id(), dto.nome(), dto.razaoSocial(), dto.nomeFantasia(), dto.cnpj(), UsuarioDTO.toEntity(dto.usuarioDTO()));
         else return null;
     }
 }

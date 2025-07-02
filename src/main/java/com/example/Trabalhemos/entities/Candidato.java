@@ -68,5 +68,5 @@ public class Candidato {
         this.experiencias = experiencias;
         this.linguagens = linguagens;
     }
-
+public Candidato() {}
 }

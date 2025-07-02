@@ -33,5 +33,6 @@ public class Usuario implements Serializable {
         this.senha = senha;
         this.tipo = tipo;
     }
+    public Usuario() {}
 
 }

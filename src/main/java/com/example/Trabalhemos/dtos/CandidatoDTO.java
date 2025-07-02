@@ -27,7 +27,7 @@ public record CandidatoDTO(Long id,
 
     public static CandidatoDTO toDTO(Candidato candidato) {
         if (candidato == null) {return null;}
-        return new CandidatoDTO(candidato.getId(), UsuarioDTO.toEntity(candidato.getUsuario()), candidato.getNome(),candidato.getCpf(), candidato.getDataNascimento(),
+        return new CandidatoDTO(candidato.getId(), UsuarioDTO.toDTO(candidato.getUsuario()), candidato.getNome(),candidato.getCpf(), candidato.getDataNascimento(),
                 candidato.getTelefone(),candidato.getCriadoEm(),candidato.getEndereco(),candidato.getCidade(),candidato.getEstado(),
                 candidato.getCep(), FormacaoDTO.listToDTO(candidato.getFormacoes()),ExperienciaDTO.listToDTO(candidato.getExperiencias()),
                 LinguagemDTO.listToDTO(candidato.getLinguagens()));
