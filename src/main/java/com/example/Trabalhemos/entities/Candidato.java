@@ -51,9 +51,9 @@ public class Candidato {
     @OneToMany(mappedBy = "candidato", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Linguagem> linguagens;
 
-    public Candidato(Long id, Usuario usuario, String nome, String cpf, Date dataNascimento, String telefone, Date criadoEm, String endereco,
+    public Candidato(Usuario usuario, String nome, String cpf, Date dataNascimento, String telefone, Date criadoEm, String endereco,
                      String cidade, String estado, String cep, List<Formacao> formacoes, List<Experiencia> experiencias, List<Linguagem> linguagens) {
-        this.id = id;
+
         this.usuario = usuario;
         this.nome = nome;
         this.cpf = cpf;

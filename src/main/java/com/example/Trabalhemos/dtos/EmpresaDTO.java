@@ -24,7 +24,7 @@ public record EmpresaDTO(Long id,
         else return null;
     }
     public static Empresa toEmpresa(EmpresaDTO dto) {
-        if (dto != null) return new Empresa(dto.id(), dto.nome(), dto.razaoSocial(), dto.nomeFantasia(), dto.cnpj(), UsuarioDTO.toEntity(dto.usuarioDTO()));
+        if (dto != null) return new Empresa(dto.nome(), dto.razaoSocial(), dto.nomeFantasia(), dto.cnpj(), UsuarioDTO.toEntity(dto.usuarioDTO()));
         else return null;
     }
 }

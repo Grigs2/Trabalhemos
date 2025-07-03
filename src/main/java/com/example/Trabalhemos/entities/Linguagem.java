@@ -24,8 +24,7 @@ public class Linguagem {
     public String nivel;
 
 
-    public Linguagem(Long id, Candidato candidato, String nome, String nivel) {
-        this.id = id;
+    public Linguagem(Candidato candidato, String nome, String nivel) {
         this.candidato = candidato;
         this.nome = nome;
         this.nivel = nivel;

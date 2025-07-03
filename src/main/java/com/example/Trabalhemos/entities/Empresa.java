@@ -29,12 +29,13 @@ public class Empresa {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
     private Usuario usuario;
 
-    public Empresa(Long id, String nome, String razaoSocial, String nomeFantasia, String cnpj, Usuario usuario) {
-        this.id = id;
+    public Empresa(String nome, String razaoSocial, String nomeFantasia, String cnpj, Usuario usuario) {
+
         this.nome = nome;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
         this.cnpj = cnpj;
         this.usuario = usuario;
     }
+    public Empresa() {}
 }

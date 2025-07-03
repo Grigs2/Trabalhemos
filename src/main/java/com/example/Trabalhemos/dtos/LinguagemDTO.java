@@ -18,7 +18,7 @@ public record LinguagemDTO(Long id, CandidatoDTO candidatoDTO, String nome, Stri
     }
     public static Linguagem toEntity(LinguagemDTO linguagemDTO) {
         if (linguagemDTO == null) return null;
-        return new Linguagem(linguagemDTO.id(), CandidatoDTO.toEntity(linguagemDTO.candidatoDTO()), linguagemDTO.nome(), linguagemDTO.nivel());
+        return new Linguagem(CandidatoDTO.toEntity(linguagemDTO.candidatoDTO()), linguagemDTO.nome(), linguagemDTO.nivel());
     }
     public static List<LinguagemDTO> listToDTO(List<Linguagem> linguagems) {
         if (linguagems == null) return null;

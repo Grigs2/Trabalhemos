@@ -18,7 +18,7 @@ public record ExperienciaDTO(Long id, CandidatoDTO candidatoDTO, String papel, S
     }
     public static Experiencia toEntity(ExperienciaDTO ExperienciaDTO) {
         if (ExperienciaDTO == null) return null;
-        return new Experiencia(ExperienciaDTO.id(), CandidatoDTO.toEntity(ExperienciaDTO.candidatoDTO()), ExperienciaDTO.papel(), ExperienciaDTO.organizacao(), ExperienciaDTO.inicio(), ExperienciaDTO.termino());
+        return new Experiencia(CandidatoDTO.toEntity(ExperienciaDTO.candidatoDTO()), ExperienciaDTO.papel(), ExperienciaDTO.organizacao(), ExperienciaDTO.inicio(), ExperienciaDTO.termino());
     }
     public static List<ExperienciaDTO> listToDTO(List<Experiencia> experiencias) {
         if (experiencias == null) return null;
