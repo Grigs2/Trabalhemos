@@ -35,7 +35,7 @@ public record CandidatoDTO(Long id,
 
     public static Candidato toEntity(CandidatoDTO dto) {
         if (dto == null) {return null;}
-        return new Candidato(dto.id(), UsuarioDTO.toEntity(dto.usuarioDTO), dto.nome(), dto.cpf(), dto.dataNascimento(), dto.telefone(),
+        return new Candidato(UsuarioDTO.toEntity(dto.usuarioDTO), dto.nome(), dto.cpf(), dto.dataNascimento(), dto.telefone(),
                 dto.criadoEm(), dto.endereco(), dto.cidade(), dto.estado(), dto.cep, FormacaoDTO.listToEntity(dto.formacoesDTO()),
                 ExperienciaDTO.listToEntity(dto.experienciasDTO()), LinguagemDTO.listToEntity(dto.liguagensDTO()));
     }
