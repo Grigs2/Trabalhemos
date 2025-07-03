@@ -53,10 +53,12 @@ public class Vaga {
 
     public Vaga() {}
 
-    public Vaga(Empresa empresa, String titulo, Date dataInicio, Date dataEncerramento, String status, String informacoes, String tipo, String salario,
+    public Vaga(Empresa empresa, String titulo, Date dataInicio, Date dataEncerramento, String status,
+                String informacoes, String tipo,String area,  String salario,
                 List<Aplicacao> aplicacaos, List<PerguntasAdicionais> perguntas) {
         this.empresa = empresa;
         this.titulo = titulo;
+        this.area = area;
         this.dataInicio = dataInicio;
         this.dataEncerramento = dataEncerramento;
         this.status = status;

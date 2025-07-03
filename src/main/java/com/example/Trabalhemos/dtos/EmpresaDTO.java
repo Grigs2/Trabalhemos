@@ -11,6 +11,9 @@ public record EmpresaDTO(Long id,
                          String nome,
                          String razaoSocial,
                          String nomeFantasia,
+                         String endereco,
+                         String cidade,
+                         String estado,
                          String cnpj,
                          UsuarioDTO usuarioDTO) implements Serializable {
 
@@ -20,11 +23,13 @@ public record EmpresaDTO(Long id,
     public static EmpresaDTO toEmpresaDTO(Empresa empresa) {
         if (empresa != null) return new EmpresaDTO(empresa.getId(), empresa.getNome(),
                                                     empresa.getRazaoSocial(), empresa.getNomeFantasia(),
+                                                    empresa.getEndereco(), empresa.getCidade(), empresa.getEstado(),
                                                     empresa.getCnpj(), UsuarioDTO.toDTO(empresa.getUsuario()));
         else return null;
     }
     public static Empresa toEmpresa(EmpresaDTO dto) {
-        if (dto != null) return new Empresa(dto.nome(), dto.razaoSocial(), dto.nomeFantasia(), dto.cnpj(), UsuarioDTO.toEntity(dto.usuarioDTO()));
+        if (dto != null) return new Empresa(dto.nome(), dto.razaoSocial(), dto.nomeFantasia(), dto.endereco(), dto.cidade(),
+                                            dto.estado(), dto.cnpj(), UsuarioDTO.toEntity(dto.usuarioDTO()));
         else return null;
     }
 }

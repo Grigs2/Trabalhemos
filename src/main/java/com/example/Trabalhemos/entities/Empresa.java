@@ -36,8 +36,11 @@ public class Empresa {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
     private Usuario usuario;
 
-    public Empresa(String nome, String razaoSocial, String nomeFantasia, String cnpj, Usuario usuario) {
-
+    public Empresa(String nome, String razaoSocial, String nomeFantasia, String endereco,
+                   String cidade, String estado, String cnpj, Usuario usuario) {
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.estado = estado;
         this.nome = nome;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
