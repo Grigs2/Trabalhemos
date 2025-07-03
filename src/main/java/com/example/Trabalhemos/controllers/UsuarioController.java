@@ -1,8 +1,8 @@
 package com.example.Trabalhemos.controllers;
 
+import com.example.Trabalhemos.dtos.UsuarioDTO;
 import com.example.Trabalhemos.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serial;
@@ -19,10 +19,10 @@ public class UsuarioController implements Serializable {
     private UsuarioService usuarioService;
 
     @GetMapping("/{email}/{senha}")
-    public @ResponseBody boolean autenticar(@PathVariable String email,
+    public @ResponseBody UsuarioDTO autenticar(@PathVariable String email,
                                             @PathVariable String senha) {
 //      Usuario usuario = autenticacaoService.autenticar(email, senha);
-        return usuarioService.login(email, senha);
+        return UsuarioDTO.toDTO(usuarioService.login(email, senha));
 }
 
 }

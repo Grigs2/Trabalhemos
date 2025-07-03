@@ -14,9 +14,8 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public boolean login(String email, String senha){
-        if(usuarioRepository.findByEmailAndSenha(email, senha).orElse(null)!=null) return true;
-        return false;
+    public Usuario login(String email, String senha){
+        return usuarioRepository.findByEmailAndSenha(email, senha).orElse(null);
     }
 
 }

@@ -5,6 +5,8 @@ import com.example.Trabalhemos.repositories.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class EmpresaService {
 
@@ -16,6 +18,10 @@ public class EmpresaService {
         return null;
     }
 
+    public Empresa findByIdUsuario(Long idUsuario) {
+        if(empresaRepository.findById(idUsuario).isPresent())return empresaRepository.findById(idUsuario).get();
+        return null;
+    }
     public void remover(Empresa empresa) {
         empresaRepository.delete(empresa);
     }

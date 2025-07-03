@@ -22,6 +22,10 @@ public class EmpresaController {
         Empresa empresa = empresaService.cadastrar(EmpresaDTO.toEmpresa(empresaDTO));
         return ResponseEntity.ok().body(EmpresaDTO.toEmpresaDTO(empresa));
     }
+    @GetMapping("/{id_usuario}")
+    public @ResponseBody ResponseEntity<EmpresaDTO> Buscar(@PathVariable Long id_usuario) {
+        return ResponseEntity.ok().body(EmpresaDTO.toEmpresaDTO(empresaService.findByIdUsuario(id_usuario)));
+    }
 
 
 
