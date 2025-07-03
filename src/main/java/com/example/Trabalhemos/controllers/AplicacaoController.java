@@ -1,5 +1,6 @@
 package com.example.Trabalhemos.controllers;
 
+import com.example.Trabalhemos.dtos.AplicacaoDTO;
 import com.example.Trabalhemos.entities.Aplicacao;
 import com.example.Trabalhemos.services.AplicacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,10 @@ public class AplicacaoController {
     private AplicacaoService aplicacaoService;
 
     @PostMapping("/Salvar")
-    public @ResponseBody ResponseEntity<Aplicacao> Salvar(@RequestBody Aplicacao aplicacao) {
-        if (aplicacao == null) {return null;}
-        if (aplicacao.getId() == null) {
-            return ResponseEntity.ok().body(aplicacaoService.Aplicar(aplicacao));
+    public @ResponseBody ResponseEntity<AplicacaoDTO> Salvar(@RequestBody AplicacaoDTO aplicacaoDTO) {
+        if (aplicacaoDTO == null) {return null;}
+        if (aplicacaoDTO.id() == null) {
+            return ResponseEntity.ok().body(AplicacaoDTO.toDTO(aplicacaoService.Aplicar(AplicacaoDTO.toEntity(aplicacaoDTO))));
         } return null;
     }
 }

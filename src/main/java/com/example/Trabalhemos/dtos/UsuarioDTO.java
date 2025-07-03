@@ -19,6 +19,6 @@ public record UsuarioDTO(Long id,
 
     public static UsuarioDTO toDTO(Usuario usuario) {
         if (usuario == null) return null;
-        return new UsuarioDTO(usuario.getId(), usuario.getEmail(), usuario.getSenha(), usuario.getTipo());
+        return new UsuarioDTO(usuario.getId(), usuario.getEmail(), null , usuario.getTipo());
     }
 }
