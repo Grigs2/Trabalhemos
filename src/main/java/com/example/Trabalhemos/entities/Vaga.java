@@ -39,6 +39,9 @@ public class Vaga {
     @Column(name = "tipo", nullable = false, length = 50)
     public String tipo;
 
+    @Column(name = "area", nullable = false, length = 50)
+    public String area;
+
     @Column(name = "salario", nullable = false, length = 50)
     public String salario;
 

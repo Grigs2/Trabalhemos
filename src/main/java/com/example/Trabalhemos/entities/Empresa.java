@@ -22,6 +22,13 @@ public class Empresa {
     @Column(name = "nomeFantasia", nullable = false, length = 300)
     public String nomeFantasia;
 
+    @Column(name = "endereco", nullable = true, length = 100)
+    public String endereco;
+    @Column(name = "cidade", nullable = true, length = 50)
+    public String cidade;
+    @Column(name = "estado", nullable = true, length = 50)
+    public String estado;
+
     @Column(name = "cnpj", nullable = false, length = 20)
     public String cnpj;
 
