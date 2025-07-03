@@ -1,6 +1,7 @@
 package com.example.Trabalhemos.controllers;
 
 import com.example.Trabalhemos.dtos.VagaDTO;
+import com.example.Trabalhemos.entities.Empresa;
 import com.example.Trabalhemos.services.VagaService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class VagaController {
         return ResponseEntity.ok().body(VagaDTO.toDTO(vagaService.Salvar(VagaDTO.toEntity(vagaDTO))));
     }
 
-    @GetMapping("/{empresa}")
-    public @ResponseBody ResponseEntity<List<VagaDTO>> buscar(@PathVariable String empresa) {
+    @GetMapping("/PorEmpresa")
+    public @ResponseBody ResponseEntity<List<VagaDTO>> buscar(@RequestBody Empresa empresa) {
         return ResponseEntity.ok().body(VagaDTO.listToDTO(vagaService.BuscarVagasPorEmpresa(empresa)));
     }
 

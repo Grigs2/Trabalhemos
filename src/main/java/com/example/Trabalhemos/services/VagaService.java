@@ -1,5 +1,6 @@
 package com.example.Trabalhemos.services;
 
+import com.example.Trabalhemos.entities.Empresa;
 import com.example.Trabalhemos.entities.Vaga;
 import com.example.Trabalhemos.repositories.VagaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class VagaService {
         return vagaRepository.findByStatus(status);
     }
 
-    public List<Vaga> BuscarVagasPorEmpresa(String empresa) {
+    public List<Vaga> BuscarVagasPorEmpresa(Empresa empresa) {
         if (empresa == null) {return null;}
         return vagaRepository.findByEmpresa(empresa);
     }

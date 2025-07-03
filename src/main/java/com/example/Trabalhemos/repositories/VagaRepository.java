@@ -1,5 +1,6 @@
 package com.example.Trabalhemos.repositories;
 
+import com.example.Trabalhemos.entities.Empresa;
 import com.example.Trabalhemos.entities.Vaga;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,7 +11,7 @@ public interface VagaRepository extends JpaRepository<Vaga, Long>  {
 
     List<Vaga> findByStatus(String status);
 
-    List<Vaga> findByEmpresa(String empresa);
+    List<Vaga> findByEmpresa(Empresa empresa);
 
 
 
