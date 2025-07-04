@@ -1,12 +1,9 @@
 package com.example.Trabalhemos.entities;
 
-import com.example.Trabalhemos.dtos.CandidatoDTO;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.action.internal.OrphanRemovalAction;
 
-import java.time.Instant;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -28,11 +25,11 @@ public class Candidato {
     @Column(name = "cpf", nullable = false, length = 50)
     public String cpf;
     @Column(name = "dataNascimento", nullable = false)
-    public Date dataNascimento;
+    public LocalDate dataNascimento;
     @Column(name = "telefone", nullable = false, length = 20)
     public String telefone;
     @Column(name = "criadoEm", nullable = false)
-    public Date criadoEm;
+    public LocalDate criadoEm;
     @Column(name = "endereco", nullable = false, length = 100)
     public String endereco;
     @Column(name = "cidade", nullable = false, length = 50)
@@ -41,6 +38,10 @@ public class Candidato {
     public String estado;
     @Column(name = "cep", nullable = false, length = 20)
     public String cep;
+
+    @Lob
+    @Column(name = "curriculo", nullable = true, columnDefinition = "BYTEA")
+    public byte[] curriculo;
 
     @OneToMany(mappedBy = "candidato", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Formacao> formacoes;
@@ -51,7 +52,7 @@ public class Candidato {
     @OneToMany(mappedBy = "candidato", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Linguagem> linguagens;
 
-    public Candidato(Usuario usuario, String nome, String cpf, Date dataNascimento, String telefone, Date criadoEm, String endereco,
+    public Candidato(Usuario usuario, String nome, String cpf, LocalDate dataNascimento, String telefone, LocalDate criadoEm, String endereco,
                      String cidade, String estado, String cep, List<Formacao> formacoes, List<Experiencia> experiencias, List<Linguagem> linguagens) {
 
         this.usuario = usuario;

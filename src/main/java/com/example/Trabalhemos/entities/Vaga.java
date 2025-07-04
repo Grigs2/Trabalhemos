@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.Length;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -25,10 +26,10 @@ public class Vaga {
     public String titulo;
 
     @Column(name = "dataInicio", nullable = false)
-    public Date dataInicio;
+    public LocalDate dataInicio;
 
     @Column(name = "dataEncerramento", nullable = false)
-    public Date dataEncerramento;
+    public LocalDate dataEncerramento;
 
     @Column(name = "status", nullable = false, length = 50)
     public String status;
@@ -53,7 +54,7 @@ public class Vaga {
 
     public Vaga() {}
 
-    public Vaga(Empresa empresa, String titulo, Date dataInicio, Date dataEncerramento, String status,
+    public Vaga(Empresa empresa, String titulo, LocalDate dataInicio, LocalDate dataEncerramento, String status,
                 String informacoes, String tipo,String area,  String salario,
                 List<Aplicacao> aplicacaos, List<PerguntasAdicionais> perguntas) {
         this.empresa = empresa;

@@ -3,6 +3,7 @@ package com.example.Trabalhemos.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -26,12 +27,12 @@ public class Experiencia {
     private String organizacao;
 
     @Column(name = "inicio",nullable = false)
-    private Date inicio;
+    private LocalDate inicio;
 
     @Column(name = "termino", nullable = true)
-    private Date termino;
+    private LocalDate termino;
 
-    public Experiencia( Candidato candidato, String papel, String organizacao,Date inicio, Date termino) {
+    public Experiencia( Candidato candidato, String papel, String organizacao,LocalDate inicio, LocalDate termino) {
         this.candidato = candidato;
         this.papel = papel;
         this.inicio = inicio;

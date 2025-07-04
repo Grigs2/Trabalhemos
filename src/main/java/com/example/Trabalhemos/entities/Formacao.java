@@ -3,6 +3,9 @@ package com.example.Trabalhemos.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Data
 @Entity
 @Table(name = "formacao", schema = "public")
@@ -26,11 +29,15 @@ public class Formacao {
     @JoinColumn(name = "id_candidato")
     public Candidato candidato;
 
-    public Formacao(String instituicao, String curso, String status, Candidato candidato) {
+    @Column(name = "dataConclusao", nullable = true)
+    public LocalDate dataConclusao;
+
+    public Formacao(String instituicao, String curso, String status, LocalDate dataConclusao,Candidato candidato) {
         this.instituicao = instituicao;
         this.curso = curso;
         this.status = status;
         this.candidato = candidato;
+        this.dataConclusao = dataConclusao;
     }
     public Formacao() {}
 }

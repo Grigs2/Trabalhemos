@@ -5,11 +5,12 @@ import com.example.Trabalhemos.entities.Vaga;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public record VagaDTO(Long id, EmpresaDTO empresaDTO, String titulo, Date dataInicio, Date dataEncerramento, String status,
+public record VagaDTO(Long id, EmpresaDTO empresaDTO, String titulo, LocalDate dataInicio, LocalDate dataEncerramento, String status,
                       String informacoes, String tipo, String area, String salario, List<AplicacaoDTO> aplicacoesDTO, List<PerguntasAdicionaisDTO> PerguntasAdicionaisDTO)
         implements Serializable {
     @Serial

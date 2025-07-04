@@ -4,11 +4,11 @@ import com.example.Trabalhemos.entities.Experiencia;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public record ExperienciaDTO(Long id, CandidatoDTO candidatoDTO, String papel, String organizacao, Date inicio, Date termino) implements Serializable {
+public record ExperienciaDTO(Long id, CandidatoDTO candidatoDTO, String papel, String organizacao, LocalDate inicio, LocalDate termino) implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 

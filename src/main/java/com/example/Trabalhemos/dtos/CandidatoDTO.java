@@ -4,16 +4,16 @@ import com.example.Trabalhemos.entities.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public record CandidatoDTO(Long id,
                            UsuarioDTO usuarioDTO,
                            String nome,
                            String cpf,
-                           Date dataNascimento,
+                           LocalDate dataNascimento,
                            String telefone,
-                           Date criadoEm,
+                           LocalDate criadoEm,
                            String endereco,
                            String cidade,
                            String estado,
