@@ -46,19 +46,21 @@ public class AplicacaoService {
                 InformacoesAdicionais info = new InformacoesAdicionais();
                 info.setPergunta(pergunta);
                 info.setAplicacao(aplicacao);
-                info.setResposta(""); // Resposta vazia inicialmente
+                info.setResposta("");
                 informacoesAdicionais.add(info);
             }
         }
         
         aplicacao.setInformacoesAdicionais(informacoesAdicionais);
 
-        if (vaga.getTipo() != null) {
-            if ((vaga.getTipo().equalsIgnoreCase("estagio") ||
-                    vaga.getTipo().equalsIgnoreCase("trainee")) &&
-                    candidato.getFormacoes() != null &&
-                    candidato.getFormacoes().stream().noneMatch(formacao -> 
-                        "cursando".equalsIgnoreCase(formacao.getStatus()))) {
+        if (vaga.getTipo() != null && candidato.getFormacoes() != null) {
+            if ((vaga.getTipo().equalsIgnoreCase("estagio") &&
+                    candidato.getFormacoes().stream()
+                            .noneMatch(formacao -> "cursando".equalsIgnoreCase(formacao.getStatus())))
+                    || (vaga.getTipo().equalsIgnoreCase("trainee") &&
+                    candidato.getFormacoes().stream()
+                            .noneMatch(formacao -> "finalizado".equalsIgnoreCase(formacao.getStatus())))) {
+
                 throw new CandidatoInvalidoException("Seu perfil não corresponde aos requisitos da vaga.");
             }
         }
@@ -78,5 +80,14 @@ public class AplicacaoService {
         }
 
         return aplicacaoRepository.save(aplicacao);
+    }
+
+    public List<Aplicacao> buscarAplicacoesPorVaga(Long idVaga) {
+        if (idVaga == null) throw new IllegalArgumentException("ID da vaga é obrigatório");
+        
+        Vaga vaga = vagaRepository.findById(idVaga).orElse(null);
+        if (vaga == null) throw new IllegalArgumentException("Vaga não encontrada");
+        
+        return aplicacaoRepository.findByVaga(vaga);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.Trabalhemos.controllers;
 
 import com.example.Trabalhemos.dtos.AplicacaoDTO;
+import com.example.Trabalhemos.dtos.AplicacaoCompletaDTO;
 import com.example.Trabalhemos.entities.Aplicacao;
 import com.example.Trabalhemos.exceptions.CandidatoInvalidoException;
 import com.example.Trabalhemos.services.AplicacaoService;
@@ -34,6 +35,12 @@ public class AplicacaoController {
                                                           @RequestBody List<String> respostas) {
         Aplicacao aplicacaoAtualizada = aplicacaoService.atualizarRespostas(id_aplicacao, respostas);
         return ResponseEntity.ok().body(AplicacaoDTO.toDTO(aplicacaoAtualizada));
+    }
+
+    @GetMapping("/Vaga/{id_vaga}")
+    public ResponseEntity<List<AplicacaoCompletaDTO>> listarAplicacoesPorVaga(@PathVariable Long id_vaga) {
+        List<Aplicacao> aplicacoes = aplicacaoService.buscarAplicacoesPorVaga(id_vaga);
+        return ResponseEntity.ok().body(AplicacaoCompletaDTO.ListToDTO(aplicacoes));
     }
 
     @ExceptionHandler(CandidatoInvalidoException.class)

@@ -1,6 +1,7 @@
 package com.example.Trabalhemos.controllers;
 
 import com.example.Trabalhemos.dtos.CandidatoDTO;
+import com.example.Trabalhemos.dtos.CurriculoDTO;
 import com.example.Trabalhemos.entities.Candidato;
 import com.example.Trabalhemos.exceptions.CondicaoInvalidaException;
 import com.example.Trabalhemos.exceptions.DadoInvalidoException;
@@ -28,15 +29,29 @@ public class CandidatoController {
         return ResponseEntity.ok().body(CandidatoDTO.toDTO(candidatoService.findByUsuarioId(id_usuario)));
     }
 
-//    @PutMapping("/{id}/Curriculo")
-//    public ResponseEntity<String> adicionarCurriculo(@PathVariable Long id, @RequestParam("arquivo") MultipartFile arquivo) {
-//        return ResponseEntity.ok().body(candidatoService.SalvarCurriculo(id, arquivo));
-//    }
-//
-//    @GetMapping("/{id}/BaixarCurriculo")
-//    public ResponseEntity<byte[]> downloadCurriculo(@PathVariable Long id) {
-//        return candidatoService.BaixarCurriculo(id);
-//    }
+    @PutMapping("/{id}/Curriculo")
+    public ResponseEntity<String> adicionarCurriculo(@PathVariable Long id, @RequestParam("arquivo") MultipartFile arquivo) {
+        return ResponseEntity.ok().body(candidatoService.SalvarCurriculo(id, arquivo));
+    }
+
+    @GetMapping("/{id}/BaixarCurriculo")
+    public ResponseEntity<byte[]> downloadCurriculo(@PathVariable Long id) {
+        return candidatoService.BaixarCurriculo(id);
+    }
+
+    @GetMapping("/{id}/Curriculo")
+    public ResponseEntity<CurriculoDTO> verificarCurriculo(@PathVariable Long id) {
+        Candidato candidato = candidatoService.findById(id);
+        if (candidato == null) {
+            return ResponseEntity.notFound().build();
+        }
+        
+        if (candidato.getCurriculo() == null) {
+            return ResponseEntity.noContent().build();
+        }
+        
+        return ResponseEntity.ok().body(CurriculoDTO.toDTO(candidato.getCurriculo()));
+    }
 
     @ExceptionHandler(DadoInvalidoException.class)
     public ResponseEntity<String> DadoInvalidoException(DadoInvalidoException ex) {

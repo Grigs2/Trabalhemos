@@ -19,7 +19,7 @@ public class EmpresaService {
     }
 
     public Empresa findByIdUsuario(Long idUsuario) {
-        if(empresaRepository.findById(idUsuario).isPresent())return empresaRepository.findById(idUsuario).get();
+        if(empresaRepository.findByUsuarioId(idUsuario).isPresent())return empresaRepository.findByUsuarioId(idUsuario).get();
         return null;
     }
     public void remover(Empresa empresa) {

@@ -9,8 +9,8 @@ import lombok.Data;
 public class Curriculo {
 
     @Id
-    @SequenceGenerator(name="SEQ", sequenceName="public.seq_candidato", allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ")
+    @SequenceGenerator(name="SEQ_CURRICULO", sequenceName="public.seq_curriculo", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CURRICULO")
     private Long id;
 
     @Lob
