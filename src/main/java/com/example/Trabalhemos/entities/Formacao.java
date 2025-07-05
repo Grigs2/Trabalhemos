@@ -32,11 +32,10 @@ public class Formacao {
     @Column(name = "dataConclusao", nullable = true)
     public LocalDate dataConclusao;
 
-    public Formacao(String instituicao, String curso, String status, LocalDate dataConclusao,Candidato candidato) {
+    public Formacao(String instituicao, String curso, String status, LocalDate dataConclusao){
         this.instituicao = instituicao;
         this.curso = curso;
         this.status = status;
-        this.candidato = candidato;
         this.dataConclusao = dataConclusao;
     }
     public Formacao() {}

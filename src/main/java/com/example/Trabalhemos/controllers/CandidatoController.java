@@ -28,15 +28,15 @@ public class CandidatoController {
         return ResponseEntity.ok().body(CandidatoDTO.toDTO(candidatoService.findByUsuarioId(id_usuario)));
     }
 
-    @PutMapping("/{id}/Curriculo")
-    public ResponseEntity<String> adicionarCurriculo(@PathVariable Long id, @RequestParam("arquivo") MultipartFile arquivo) {
-        return ResponseEntity.ok().body(candidatoService.SalvarCurriculo(id, arquivo));
-    }
-
-    @GetMapping("/{id}/BaixarCurriculo")
-    public ResponseEntity<byte[]> downloadCurriculo(@PathVariable Long id) {
-        return candidatoService.BaixarCurriculo(id);
-    }
+//    @PutMapping("/{id}/Curriculo")
+//    public ResponseEntity<String> adicionarCurriculo(@PathVariable Long id, @RequestParam("arquivo") MultipartFile arquivo) {
+//        return ResponseEntity.ok().body(candidatoService.SalvarCurriculo(id, arquivo));
+//    }
+//
+//    @GetMapping("/{id}/BaixarCurriculo")
+//    public ResponseEntity<byte[]> downloadCurriculo(@PathVariable Long id) {
+//        return candidatoService.BaixarCurriculo(id);
+//    }
 
     @ExceptionHandler(DadoInvalidoException.class)
     public ResponseEntity<String> DadoInvalidoException(DadoInvalidoException ex) {

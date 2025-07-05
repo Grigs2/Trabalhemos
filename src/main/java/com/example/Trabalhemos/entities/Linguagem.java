@@ -24,8 +24,7 @@ public class Linguagem {
     public String nivel;
 
 
-    public Linguagem(Candidato candidato, String nome, String nivel) {
-        this.candidato = candidato;
+    public Linguagem(String nome, String nivel) {
         this.nome = nome;
         this.nivel = nivel;
     }

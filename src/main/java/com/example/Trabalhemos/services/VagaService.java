@@ -4,6 +4,7 @@ import com.example.Trabalhemos.entities.Empresa;
 import com.example.Trabalhemos.entities.Vaga;
 import com.example.Trabalhemos.exceptions.CondicaoInvalidaException;
 import com.example.Trabalhemos.exceptions.DadoInvalidoException;
+import com.example.Trabalhemos.repositories.EmpresaRepository;
 import com.example.Trabalhemos.repositories.VagaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,13 +18,17 @@ public class VagaService {
 
     @Autowired
     private VagaRepository vagaRepository;
+    @Autowired
+    private EmpresaRepository empresaRepository;
 
     public List<Vaga> findAll() {
         return vagaRepository.findAll();
     }
 
-    public Vaga Salvar(Vaga vaga) {
+    public Vaga Salvar(Vaga vaga, Long idEmpresa) {
         if (vaga == null) {return null;}
+        vaga.setEmpresa(empresaRepository.findById(idEmpresa).orElse(null));
+        vaga.getPerguntas().forEach(p -> p.setVaga(vaga));
         return vagaRepository.save(vaga);
     }
 
@@ -32,7 +37,9 @@ public class VagaService {
         return vagaRepository.findByStatus(status);
     }
 
-    public List<Vaga> BuscarVagasPorEmpresa(Empresa empresa) {
+    public List<Vaga> BuscarVagasPorEmpresa(Long id) {
+        if (id == null) {return null;}
+        Empresa empresa = empresaRepository.findById(id).orElse(null);
         if (empresa == null) {return null;}
         if(empresa.getUsuario().getId() == null) {return null;}
         return vagaRepository.findByEmpresa(empresa);

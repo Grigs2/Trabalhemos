@@ -9,19 +9,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public record FormacaoDTO(Long id, String titulo, String descricao, String status, LocalDate dataConclusao, CandidatoDTO candidatoDTO) implements Serializable {
+public record FormacaoDTO(Long id, String titulo, String descricao, String status, LocalDate dataConclusao) implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     public static Formacao toEntity(FormacaoDTO formacaoDTO) {
         if (formacaoDTO == null) return null;
-        return new Formacao(formacaoDTO.titulo(), formacaoDTO.descricao(), formacaoDTO.status(), formacaoDTO.dataConclusao(),
-                CandidatoDTO.toEntity(formacaoDTO.candidatoDTO));
+        return new Formacao(formacaoDTO.titulo(), formacaoDTO.descricao(), formacaoDTO.status(), formacaoDTO.dataConclusao()
+                );
     }
     public static FormacaoDTO toDTO(Formacao formacao) {
         if (formacao == null) return null;
-        return new FormacaoDTO(formacao.getId(), formacao.getInstituicao(), formacao.getCurso(), formacao.getStatus(), formacao.getDataConclusao(),
-                CandidatoDTO.toDTO(formacao.getCandidato()));
+        return new FormacaoDTO(formacao.getId(), formacao.getInstituicao(), formacao.getCurso(), formacao.getStatus(), formacao.getDataConclusao());
     }
     public static List<FormacaoDTO> listToDTO(List<Formacao> formacoes) {
         if (formacoes == null) return null;

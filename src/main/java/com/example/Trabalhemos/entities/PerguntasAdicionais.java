@@ -22,8 +22,7 @@ public class PerguntasAdicionais {
 
     public PerguntasAdicionais() {}
 
-    public PerguntasAdicionais(Vaga vaga, String pergunta) {
-        this.vaga = vaga;
+    public PerguntasAdicionais(String pergunta) {
         this.pergunta = pergunta;
     }
 }

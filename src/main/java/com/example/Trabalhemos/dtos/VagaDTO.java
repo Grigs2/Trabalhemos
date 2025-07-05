@@ -10,23 +10,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public record VagaDTO(Long id, EmpresaDTO empresaDTO, String titulo, LocalDate dataInicio, LocalDate dataEncerramento, String status,
-                      String informacoes, String tipo, String area, String salario, List<AplicacaoDTO> aplicacoesDTO, List<PerguntasAdicionaisDTO> PerguntasAdicionaisDTO)
+public record VagaDTO(Long id, String titulo, LocalDate dataInicio, LocalDate dataEncerramento, String status,
+                      String informacoes, String tipo, String area, String salario,List<PerguntasAdicionaisDTO> PerguntasAdicionaisDTO)
         implements Serializable {
     @Serial
     private static final long serialVersionUID = 13789L;
 
     public static VagaDTO toDTO(Vaga vaga) {
         if (vaga == null) return null;
-        return new VagaDTO(vaga.getId(), EmpresaDTO.toEmpresaDTO(vaga.getEmpresa()), vaga.getTitulo(), vaga.getDataInicio(),
+        return new VagaDTO(vaga.getId(), vaga.getTitulo(), vaga.getDataInicio(),
                 vaga.getDataEncerramento(), vaga.getStatus(), vaga.getInformacoes(), vaga.getTipo(), vaga.getArea(), vaga.getSalario(),
-                AplicacaoDTO.ListToDTO(vaga.getAplicacaos()), com.example.Trabalhemos.dtos.PerguntasAdicionaisDTO.listToDTO(vaga.getPerguntas()));
+                 com.example.Trabalhemos.dtos.PerguntasAdicionaisDTO.listToDTO(vaga.getPerguntas()));
     }
 
     public static Vaga toEntity(VagaDTO vagaDTO) {
         if (vagaDTO == null) return null;
-        return new Vaga(EmpresaDTO.toEmpresa(vagaDTO.empresaDTO()), vagaDTO.titulo(), vagaDTO.dataInicio(), vagaDTO.dataEncerramento(),
-                vagaDTO.status(), vagaDTO.informacoes(), vagaDTO.tipo(), vagaDTO.area(), vagaDTO.salario(), AplicacaoDTO.ListToEntity(vagaDTO.aplicacoesDTO()),
+        return new Vaga(vagaDTO.titulo(), vagaDTO.dataInicio(), vagaDTO.dataEncerramento(),
+                vagaDTO.status(), vagaDTO.informacoes(), vagaDTO.tipo(), vagaDTO.area(), vagaDTO.salario(),
                 com.example.Trabalhemos.dtos.PerguntasAdicionaisDTO.listToEntity(vagaDTO.PerguntasAdicionaisDTO()));
     }
 

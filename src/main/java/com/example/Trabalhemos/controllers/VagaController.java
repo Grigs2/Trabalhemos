@@ -19,15 +19,15 @@ public class VagaController {
     @Autowired
     private VagaService vagaService;
 
-    @PostMapping("/Salvar")
-    public @ResponseBody ResponseEntity<VagaDTO> salvar(@RequestBody VagaDTO vagaDTO) {
+    @PostMapping("/Salvar/{idEmpresa}")
+    public @ResponseBody ResponseEntity<VagaDTO> salvar(@RequestBody VagaDTO vagaDTO, @PathVariable Long idEmpresa) {
         if(vagaDTO==null)return null;
-        return ResponseEntity.ok().body(VagaDTO.toDTO(vagaService.Salvar(VagaDTO.toEntity(vagaDTO))));
+        return ResponseEntity.ok().body(VagaDTO.toDTO(vagaService.Salvar(VagaDTO.toEntity(vagaDTO), idEmpresa)));
     }
 
-    @GetMapping("/PorEmpresa")
-    public @ResponseBody ResponseEntity<List<VagaDTO>> buscar(@RequestBody Empresa empresa) {
-        return ResponseEntity.ok().body(VagaDTO.listToDTO(vagaService.BuscarVagasPorEmpresa(empresa)));
+    @GetMapping("/PorEmpresa/{idEmpresa}")
+    public @ResponseBody ResponseEntity<List<VagaDTO>> buscar(@PathVariable Long idEmpresa) {
+        return ResponseEntity.ok().body(VagaDTO.listToDTO(vagaService.BuscarVagasPorEmpresa(idEmpresa)));
     }
 
     @GetMapping("/Todas")

@@ -46,7 +46,7 @@ public class Vaga {
     @Column(name = "salario", nullable = false, length = 50)
     public String salario;
 
-    @OneToMany(mappedBy = "vaga", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "vaga", cascade = CascadeType.DETACH, orphanRemoval = true)
     public List<Aplicacao> aplicacaos;
 
     @OneToMany(mappedBy = "vaga", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -54,10 +54,9 @@ public class Vaga {
 
     public Vaga() {}
 
-    public Vaga(Empresa empresa, String titulo, LocalDate dataInicio, LocalDate dataEncerramento, String status,
-                String informacoes, String tipo,String area,  String salario,
-                List<Aplicacao> aplicacaos, List<PerguntasAdicionais> perguntas) {
-        this.empresa = empresa;
+    public Vaga(String titulo, LocalDate dataInicio, LocalDate dataEncerramento, String status,
+                String informacoes, String tipo,String area,  String salario, List<PerguntasAdicionais> perguntas) {
+
         this.titulo = titulo;
         this.area = area;
         this.dataInicio = dataInicio;
@@ -66,7 +65,6 @@ public class Vaga {
         this.informacoes = informacoes;
         this.tipo = tipo;
         this.salario = salario;
-        this.aplicacaos = aplicacaos;
         this.perguntas = perguntas;
     }
 

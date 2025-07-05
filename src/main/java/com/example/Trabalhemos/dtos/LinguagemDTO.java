@@ -8,17 +8,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public record LinguagemDTO(Long id, CandidatoDTO candidatoDTO, String nome, String nivel) implements Serializable {
+public record LinguagemDTO(Long id, String nome, String nivel) implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     public static LinguagemDTO toDTO(Linguagem linguagem) {
         if (linguagem == null) return null;
-        return new LinguagemDTO(linguagem.getId(), CandidatoDTO.toDTO(linguagem.getCandidato()), linguagem.getNome(), linguagem.getNivel());
+        return new LinguagemDTO(linguagem.getId(), linguagem.getNome(), linguagem.getNivel());
     }
     public static Linguagem toEntity(LinguagemDTO linguagemDTO) {
         if (linguagemDTO == null) return null;
-        return new Linguagem(CandidatoDTO.toEntity(linguagemDTO.candidatoDTO()), linguagemDTO.nome(), linguagemDTO.nivel());
+        return new Linguagem(linguagemDTO.nome(), linguagemDTO.nivel());
     }
     public static List<LinguagemDTO> listToDTO(List<Linguagem> linguagems) {
         if (linguagems == null) return null;

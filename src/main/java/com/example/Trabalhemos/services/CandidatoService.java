@@ -38,27 +38,27 @@ public class CandidatoService {
         return candidatoRepository.findByUsuarioId(id).orElse(null);
     }
 
-    public String SalvarCurriculo(Long id, MultipartFile arquivo) {
-        if(id == null || arquivo == null) throw new DadoInvalidoException("dados invalidos");
-        Candidato candidato = candidatoRepository.findById(id).orElse(null);
-        if(candidato == null) {throw new DadoInvalidoException("candidato nao encontrado");}
-
-        try {
-            candidato.setCurriculo(arquivo.getBytes());
-            candidatoRepository.save(candidato);
-        } catch (IOException e) {
-            throw new DadoInvalidoException("Arquivo nao encontrado");
-        }
-        return "Curriculo salvo com sucesso!";
-    }
-
-    public ResponseEntity<byte[]> BaixarCurriculo(Long id) {
-        Candidato candidato = candidatoRepository.findById(id)
-                .orElseThrow(() -> new CondicaoInvalidaException("Candidato não encontrado."));
-
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=curriculo.pdf")
-                .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                .body(candidato.getCurriculo());
-    }
+//    public String SalvarCurriculo(Long id, MultipartFile arquivo) {
+//        if(id == null || arquivo == null) throw new DadoInvalidoException("dados invalidos");
+//        Candidato candidato = candidatoRepository.findById(id).orElse(null);
+//        if(candidato == null) {throw new DadoInvalidoException("candidato nao encontrado");}
+//
+//        try {
+//            candidato.setCurriculo(arquivo.getBytes());
+//            candidatoRepository.save(candidato);
+//        } catch (IOException e) {
+//            throw new DadoInvalidoException("Arquivo nao encontrado");
+//        }
+//        return "Curriculo salvo com sucesso!";
+//    }
+//
+//    public ResponseEntity<byte[]> BaixarCurriculo(Long id) {
+//        Candidato candidato = candidatoRepository.findById(id)
+//                .orElseThrow(() -> new CondicaoInvalidaException("Candidato não encontrado."));
+//
+//        return ResponseEntity.ok()
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=curriculo.pdf")
+//                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+//                .body(candidato.getCurriculo());
+//    }
 }

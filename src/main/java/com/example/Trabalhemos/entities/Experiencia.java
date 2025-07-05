@@ -32,8 +32,8 @@ public class Experiencia {
     @Column(name = "termino", nullable = true)
     private LocalDate termino;
 
-    public Experiencia( Candidato candidato, String papel, String organizacao,LocalDate inicio, LocalDate termino) {
-        this.candidato = candidato;
+    public Experiencia(String papel, String organizacao,LocalDate inicio, LocalDate termino) {
+
         this.papel = papel;
         this.inicio = inicio;
         this.termino = termino;

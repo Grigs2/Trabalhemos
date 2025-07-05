@@ -8,17 +8,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public record ExperienciaDTO(Long id, CandidatoDTO candidatoDTO, String papel, String organizacao, LocalDate inicio, LocalDate termino) implements Serializable {
+public record ExperienciaDTO(Long id, String papel, String organizacao, LocalDate inicio, LocalDate termino) implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     public static ExperienciaDTO toDTO(Experiencia e) {
         if (e == null) return null;
-        return new ExperienciaDTO(e.getId(), CandidatoDTO.toDTO(e.getCandidato()), e.getPapel(), e.getOrganizacao(), e.getInicio(), e.getTermino());
+        return new ExperienciaDTO(e.getId(), e.getPapel(), e.getOrganizacao(), e.getInicio(), e.getTermino());
     }
     public static Experiencia toEntity(ExperienciaDTO ExperienciaDTO) {
         if (ExperienciaDTO == null) return null;
-        return new Experiencia(CandidatoDTO.toEntity(ExperienciaDTO.candidatoDTO()), ExperienciaDTO.papel(), ExperienciaDTO.organizacao(), ExperienciaDTO.inicio(), ExperienciaDTO.termino());
+        return new Experiencia(ExperienciaDTO.papel(), ExperienciaDTO.organizacao(), ExperienciaDTO.inicio(), ExperienciaDTO.termino());
     }
     public static List<ExperienciaDTO> listToDTO(List<Experiencia> experiencias) {
         if (experiencias == null) return null;
