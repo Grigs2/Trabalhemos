@@ -13,10 +13,12 @@ public class AplicacaoService {
     private AplicacaoRepository aplicacaoRepository;
 
     public Aplicacao Aplicar(Aplicacao aplicacao) {
-        if ((aplicacao.getVaga().getTipo().equalsIgnoreCase("estagio") ||
-            aplicacao.getVaga().getTipo().equalsIgnoreCase("trainee")) &&
-            aplicacao.getCandidato().getFormacoes().stream().noneMatch(formacao -> "cursando".equalsIgnoreCase(formacao.getStatus()))) {
-            throw new CandidatoInvalidoException("Seu perfil não corresponde aos requisitos da vaga de estágio.");
+        if (aplicacao.getVaga().getTipo()!=null){
+            if ((aplicacao.getVaga().getTipo().equalsIgnoreCase("estagio") ||
+                    aplicacao.getVaga().getTipo().equalsIgnoreCase("trainee")) &&
+                    aplicacao.getCandidato().getFormacoes().stream().noneMatch(formacao -> "cursando".equalsIgnoreCase(formacao.getStatus()))) {
+                throw new CandidatoInvalidoException("Seu perfil não corresponde aos requisitos da vaga de estágio.");
+            }
         }
         return aplicacaoRepository.save(aplicacao);
     }

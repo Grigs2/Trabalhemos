@@ -17,7 +17,7 @@ public class EmpresaController {
     @Autowired
     EmpresaService empresaService;
 
-    @GetMapping("/Cadastrar")
+    @PostMapping("/Cadastrar")
     public @ResponseBody ResponseEntity<EmpresaDTO> Cadastrar(@RequestBody EmpresaDTO empresaDTO) {
         Empresa empresa = empresaService.cadastrar(EmpresaDTO.toEmpresa(empresaDTO));
         return ResponseEntity.ok().body(EmpresaDTO.toEmpresaDTO(empresa));
