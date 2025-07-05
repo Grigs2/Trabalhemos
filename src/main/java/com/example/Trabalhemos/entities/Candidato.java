@@ -39,9 +39,6 @@ public class Candidato {
     @Column(name = "cep", nullable = false, length = 20)
     public String cep;
 
-    @Lob
-    @Column(name = "curriculo", nullable = true, columnDefinition = "BYTEA")
-    public byte[] curriculo;
 
     @OneToMany(mappedBy = "candidato", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Formacao> formacoes;
@@ -51,6 +48,9 @@ public class Candidato {
 
     @OneToMany(mappedBy = "candidato", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Linguagem> linguagens;
+
+    @OneToOne(mappedBy = "candidato", cascade = CascadeType.ALL, orphanRemoval = true)
+    public Curriculo curriculo;
 
     public Candidato(Usuario usuario, String nome, String cpf, LocalDate dataNascimento, String telefone, LocalDate criadoEm, String endereco,
                      String cidade, String estado, String cep, List<Formacao> formacoes, List<Experiencia> experiencias, List<Linguagem> linguagens) {
