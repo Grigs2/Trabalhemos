@@ -21,6 +21,10 @@ public class CandidatoService {
     private CandidatoRepository candidatoRepository;
 
     public String SalvarCandidato(Candidato candidato) {
+        if (candidato == null) {return "erro ao cadastrar candidato";}
+        candidato.getFormacoes().forEach(formacao -> {formacao.setCandidato(candidato);});
+        candidato.getExperiencias().forEach(experiencia -> {experiencia.setCandidato(candidato);});
+        candidato.getLinguagens().forEach(linguagem -> {linguagem.setCandidato(candidato);});
         candidatoRepository.save(candidato);
         return "Candidato salvo com sucesso!";
     }

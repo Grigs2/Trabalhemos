@@ -6,6 +6,8 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.util.List;
 
+import static jakarta.persistence.FetchType.EAGER;
+
 @Data
 @Entity
 @Table(name = "Candidato", schema = "public")

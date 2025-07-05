@@ -29,9 +29,7 @@ public class Aplicacao {
     @OneToMany(mappedBy = "aplicacao", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<InformacoesAdicionais> informacoesAdicionais;
 
-    public Aplicacao(Vaga vaga, Candidato candidato, String status, List<InformacoesAdicionais> informacoesAdicionais) {
-        this.vaga = vaga;
-        this.candidato = candidato;
+    public Aplicacao(String status, List<InformacoesAdicionais> informacoesAdicionais) {
         this.status = status;
         this.informacoesAdicionais = informacoesAdicionais;
     }

@@ -26,8 +26,7 @@ public class InformacoesAdicionais {
 
     public InformacoesAdicionais() {}
 
-    public InformacoesAdicionais(Aplicacao aplicacao, PerguntasAdicionais pergunta, String resposta) {
-        this.aplicacao = aplicacao;
+    public InformacoesAdicionais(PerguntasAdicionais pergunta, String resposta) {
         this.pergunta = pergunta;
         this.resposta = resposta;
     }
